@@ -12,8 +12,8 @@ interface StoryViewerProps {
 
 const StoryViewer = ({ story, onClose, onNext, onPrev, isFirst, isLast }: StoryViewerProps) => {
   const [progress, setProgress] = useState(0);
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const intervalRef = useRef<ReturnType<typeof setTimeout> | null>(null);  
 
   useEffect(() => {
     setProgress(0);
