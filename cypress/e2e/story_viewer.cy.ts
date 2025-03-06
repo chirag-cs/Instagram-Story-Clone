@@ -2,16 +2,13 @@
 
 describe("Instagram Story Viewer - Mobile", () => {
   beforeEach(() => {
-    // Set viewport to a common mobile resolution
-    cy.viewport(390, 844); // iPhone 14 Pro (You can change this if needed)
+    
+    cy.viewport(390, 844); 
 
-    // Intercept API request going to localhost instead of the external API
     cy.intercept("GET", "/v2/list*", { fixture: "stories.json" }).as("fetchStories");
 
-    // Visit the localhost app
-    cy.visit("http://localhost:5173"); // Change this to your actual localhost port
+    cy.visit("http://localhost:5173"); 
 
-    // Wait for the API call
     cy.wait("@fetchStories", { timeout: 10000 });
   });
 
@@ -25,31 +22,29 @@ describe("Instagram Story Viewer - Mobile", () => {
   });
 
   it("should navigate to the next story", () => {
-    cy.get(".story").first().click(); // Open the first story
-    cy.get(".story-viewer", { timeout: 14000 }).should("be.visible"); // Ensure viewer opens
+    cy.get(".story").first().click(); 
+    cy.get(".story-viewer", { timeout: 14000 }).should("be.visible"); 
 
-    // Get the image and click on the RIGHT SIDE
     cy.get(".story-image")
       .should("be.visible")
       .then(($img) => {
-        const imgWidth = $img.width() || 200; // Default width if undefined
-        const clickX = imgWidth * 0.8; // Click 80% to the right
-        cy.wrap($img).click(clickX, 50); // Click towards the right side
+        const imgWidth = $img.width() || 200; 
+        const clickX = imgWidth * 0.8; 
+        cy.wrap($img).click(clickX, 50); 
       });
 
-    cy.get(".story-image", { timeout: 14000 }).should("exist"); // Ensure new story loads
+    cy.get(".story-image", { timeout: 14000 }).should("exist"); 
   });
 
   it("should navigate to the previous story", () => {
-    cy.get(".story").eq(1).click(); // Open second story
+    cy.get(".story").eq(1).click(); 
     cy.get(".story-viewer", { timeout: 14000 }).should("be.visible");
 
-    // Click on the LEFT SIDE of the image to go back
     cy.get(".story-image")
       .should("be.visible")
       .then(($img) => {
         const imgWidth = $img.width() || 200;
-        const clickX = imgWidth * 0.2; // Click 20% from the left
+        const clickX = imgWidth * 0.2; 
         cy.wrap($img).click(clickX, 50);
       });
 

@@ -67,7 +67,7 @@ button:focus-visible {
   }
 }
 
-/* Hide the app on larger screens */
+
 /* @media (min-width: 768px) {
   #root {
     display: none;
