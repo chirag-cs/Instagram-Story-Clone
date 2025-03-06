@@ -1,54 +1,87 @@
-# React + TypeScript + Vite
+# Instagram Stories Clone
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An Instagram-style story viewer built using **React.js** and **TypeScript**, featuring smooth animations, auto-advancing stories, manual navigation, and Cypress tests for end-to-end functionality.
 
-Currently, two official plugins are available:
+## 🚀 Live Demo
+**(https://chirag-insta-story.netlify.app/)**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
+## 📜 Features
+- **Horizontally scrollable stories** fetched from an external file.
+- **Auto-advancing every 5 seconds** with a loading indicator.
+- **Manual navigation** by tapping left/right on the story.
+- **Smooth transitions** for a seamless user experience.
+- **Cypress tests** to ensure all core functionalities work correctly.
+- **Optimized for mobile** (but developed on desktop first).
 
-## Expanding the ESLint configuration
+---
+## 🛠️ Setup & Installation
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+### **1️⃣ Clone the Repository**
+```sh
+git clone https://github.com/chirag-cs/Instagram-Story-Clone.git
+cd Instagram-Story-Clone
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+### **2️⃣ Install Dependencies**
+```sh
+pnpm install
 ```
+
+### **3️⃣ Start the Development Server**
+```sh
+pnpm run dev
+```
+- The app runs locally at **http://localhost:5173/**
+
+### **4️⃣ Run Cypress Tests**
+Ensure the app is running locally, then execute:
+```sh
+pnpm run test:e2e
+```
+
+---
+## 📐 Design Choices & Optimizations
+
+### **Performance & Scalability Considerations**
+1. **Optimized Rendering:**
+   - Stories load dynamically using `useEffect`.
+   - Avoids unnecessary re-renders with `useRef` and `useCallback`.
+
+2. **Efficient Story Navigation:**
+   - Uses `setTimeout` to handle auto-advancing without redundant updates.
+   - Click-based navigation is optimized for mobile touch interactions.
+
+3. **Minimal External Dependencies:**
+   - Built with native React and TypeScript without heavy external libraries.
+   - Cypress used only for testing, ensuring no impact on bundle size.
+
+4. **Mobile-First UI:**
+   - Designed to work seamlessly on mobile devices.
+   - Uses CSS for smooth animations and user-friendly interactions.
+
+---
+## 📂 Project Structure
+```
+📦 instagram-stories-clone
+├── 📁 public/         # Static assets (images, icons)
+├── 📁 src/            # Source code
+│   ├── 📁 components/ # React components
+│   ├── 📁 assets/     # Image assets
+│   ├── App.tsx       # Main app component
+│   ├── main.tsx      # Entry point
+├── 📁 cypress/       # End-to-end tests
+├── .gitignore        # Ignore unnecessary files in Git
+├── package.json      # Project dependencies
+├── README.md         # Project documentation
+└── vite.config.ts    # Vite configuration
+```
+
+---
+## 📝 Contribution
+Feel free to fork this repository and submit pull requests for improvements!
+
+---
+## 🔥 Author
+Developed by **Chirag** with **React, TypeScript, and Cypress** 🚀
+
