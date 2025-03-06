@@ -3,7 +3,7 @@
 An Instagram-style story viewer built using **React.js** and **TypeScript**, featuring smooth animations, auto-advancing stories, manual navigation, and Cypress tests for end-to-end functionality.
 
 ## 🚀 Live Demo
-**[View the deployed app here]((https://chirag-insta-story.netlify.app/))**
+**(https://chirag-insta-story.netlify.app/)**
 
 ---
 ## 📜 Features
